@@ -36,7 +36,7 @@ return(
                                 <ul>
                                     <Link to='/'><span>Home</span></Link>
                                     <Link to='/listings/search'><span>Property Search</span></Link>
-                                    <Link href='#'><span>Brokers list</span></Link>
+                                    <Link href='#'><span>Contacts</span></Link>
                                     <Link to='/seller/create'><span>Sign in</span></Link>
                                     <Link to='/seller/login'><span>Login</span></Link>
                                 </ul>

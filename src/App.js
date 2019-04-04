@@ -6,7 +6,8 @@ import { Route, } from 'react-router-dom';
 import PropertySearch from './containers/PropertySearch';
 import AuthContext from './contexts/auth';
 import firebase from './firebase';
-import LoginHeader from './components/loginHeader'
+import LoginHeader from './components/loginHeader';
+import ShoppingCart from './containers/shoppingCart';
 
 
 
@@ -43,6 +44,7 @@ class App extends Component {
           <Route path='/seller/create' exact component={Signup} />
           <Route path='/seller/login' exact component={Login} />
           <Route path='/listings/search' exact component={PropertySearch} />
+          <Route path='/shoppingCart' exact component={ShoppingCart} />
       </AuthContext.Provider>
     );
   }
