@@ -8,7 +8,8 @@ import AuthContext from './contexts/auth';
 import firebase from './firebase';
 import LoginHeader from './components/loginHeader';
 import ShoppingCart from './containers/shoppingCart';
-
+import Upload from './containers/upload';
+// import BrokerListing from './containers/brokerListing';
 
 
 class App extends Component {
@@ -43,6 +44,7 @@ class App extends Component {
           <Route path='/' exact component={Home} />
           <Route path='/seller/create' exact component={Signup} />
           <Route path='/seller/login' exact component={Login} />
+          <Route path='/seller/image' exact component={Upload} />
           <Route path='/listings/search' exact component={PropertySearch} />
           <Route path='/shoppingCart' exact component={ShoppingCart} />
       </AuthContext.Provider>

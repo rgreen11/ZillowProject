@@ -2,12 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import API_KEY from '../components/API';
 import {Link} from 'react-router-dom';
+import ImageService from '../services/images'; 
 
 class PropertySearch extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             search: '',
+            images: '',
             data: {},
 
         }
@@ -36,8 +38,13 @@ class PropertySearch extends React.Component {
         localStorage.setItem('home', data)
     }
 
+    getImages=()=>{
+        console.log('this is an url',ImageService.getImages())
+       return ImageService.getImages()
+    }
 
     render(){
+        
         const data = this.state.data.property;
         const display = (data)=>{
           return data.map((house)=>{
@@ -53,6 +60,11 @@ class PropertySearch extends React.Component {
         return(
             <div className="content-wrapper wrap" >
                 <Link to='/shoppingCart'>Shopping Cart</Link>
+                {
+                    this.getImages().map((e, i)=>{
+                    return <img src={e.url} key={i} alt="zillow"/>
+                })
+                }
             { !data ? 'Is Loading' : display(data)}
                 
             </div>
