@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from '../firebase';
-// import axios from 'axios';
+import axios from 'axios';
 
 export default class Signup extends React.Component {
 
@@ -11,8 +11,7 @@ export default class Signup extends React.Component {
     company: '', 
     email: '',
     password: '',
-    error: '',
-    userId: '' // must be stored
+    error: ''
   }
 
   handleChange = (e) => {
@@ -21,14 +20,16 @@ export default class Signup extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
-    const { email, password } = this.state;
+      console.log('this is the state data:',this.state)
+    const { first_name, last_name, phone_number, company, email, password} = this.state;
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((response) => {
-        console.log('Returns: ', response);
+        const uid = response.user.uid
+        const token = response.user.refreshToken
+        axios.post('/seller/create', {first_name, last_name, phone_number, company, email, token, uid})
+          console.log('here you are:',first_name, last_name, phone_number, company, email, token, uid)
       })
       .catch(err => {
-        
         this.setState({ error: err });
       })
   }
@@ -55,8 +56,7 @@ export default class Signup extends React.Component {
 
   render() {
     const { first_name, last_name, phone_number, company, email, password, error } = this.state;
-    const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
-    console.log(this.state)
+    const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert"><h1>User already exist</h1></div>
 
     return (
       <>
@@ -79,7 +79,7 @@ export default class Signup extends React.Component {
             <input type="text" className="form-control" aria-describedby="emailHelp" placeholder="Email" name="email" value={email} onChange={this.handleChange} />
           </div>
           <div className="form-group">
-            <input type="password" className="form-control" placeholder="Password" value={password} name="password" onChange={this.handleChange} />
+            <input type="password" className="form-control" placeholder="Password"  name="password" value={password} onChange={this.handleChange} />
           </div>
           <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Sign Up</button>
         </form>

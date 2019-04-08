@@ -22,7 +22,7 @@ return(
                                 <ul>
                                     <Link to='/'><span>Home</span></Link>
                                     <Link to='/listings/search'><span>Property Search</span></Link>
-                                    <Link to='/seller/image'><span>My Listings</span></Link>
+                                    <Link to='/seller/image'><span>Post Property</span></Link>
                                     <Link href='#'><span>Broker History</span></Link>
                                     <Link to='/'><span onClick={HandleLogout}>Logout</span></Link>
                                 </ul>
