@@ -16,7 +16,6 @@ export default class Home extends React.Component {
         parking:'',
         numday: '',
         type: '',
-        url: '',
     }
     // sellers_id, cost, address, yearbuilt, heating, cooling, parking, numDay, type, url
 
@@ -54,33 +53,16 @@ export default class Home extends React.Component {
 
       handleSubmit = (e) => {
         e.preventDefault();
-        const {sellers_id, cost, address, yearbuilt, heating, cooling, parking, numDay, type, url} = this.state;
-        console.log(sellers_id, cost, address, yearbuilt, heating, cooling, parking, numDay, type, url)
+
+        const url = ImageService.getImages()[0].url;
+
+        const {sellers_id, cost, address, yearbuilt, heating, cooling, parking, numDay, type} = this.state;
+        // console.log(sellers_id, cost, address, yearbuilt, heating, cooling, parking, numDay, type, url)
         axios.post('/listings/create',{sellers_id, cost, address, yearbuilt, heating, cooling, parking, numDay, type, url})
              .then((data)=>{console.log("THE DATA WAS ADDED here", data)})
-             .catch((err) => console.log(err))
-
-
-        
+             .catch((err) => console.log(err)) 
       }
 
-      componentDidMount(){
-        // const {cost,address,yearbuilt,heating,cooling,parking,numday,type, url} = this.state;
-        // axios.get('/listings/create',{cost,address,yearbuilt,heating,cooling,parking,numday,type, url})
-        //      .then((data)=>{console.log("THE DATA WAS ADDED here", data)})
-        //      .catch((err) => console.log(err))
-
-        // const {cost,address,yearbuilt,cooling,parking,numday,type, url} = this.state;
-        //   Axios.post('http://localhost:3001/listings/create',{
-        //     cost,address,yearbuilt,cooling,parking,numday,type, url
-        //   })
-        //   .then((data)=>{
-        //     console.log(data)
-        //   })
-        //   .catch((err)=>{
-        //     console.log({err: err})
-        //   })
-      }
 
     render() {
 

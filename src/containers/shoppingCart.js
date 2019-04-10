@@ -10,6 +10,9 @@ class Shopping extends React.Component {
 
 storage = () =>{
    const data = localStorage.getItem('home')
+   if(!data){
+       return <h1>Your cart is empty</h1>
+   } else 
    this.setState({data: JSON.parse(data)})
 }        
     

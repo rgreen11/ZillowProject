@@ -17,10 +17,10 @@ class PropertySearch extends React.Component {
 
     
 
-    componentDidMount = () => {
-        const axios = require('axios')
+    componentDidMount () {
+        const zipCode = localStorage.getItem('location')
         const APIKEY = API_KEY;
-        axios.get('https://search.onboard-apis.com/propertyapi/v1.0.0/property/address?postalcode=11206&page=1&pagesize=10', 
+        axios.get(`https://search.onboard-apis.com/propertyapi/v1.0.0/property/address?postalcode=${zipCode}&page=1&pagesize=10`, 
         { headers: 
             { apikey: APIKEY ,
             } })
@@ -39,7 +39,10 @@ class PropertySearch extends React.Component {
     }
 
     getImages=()=>{
-        console.log('this is an url',ImageService.getImages())
+        console.log('this is a url',ImageService.getImages())
+        // if(!ImageService.getImages()){
+        //     return <h1>Your cart is empty</h1>
+        // } else 
        return ImageService.getImages()
     }
 
@@ -47,9 +50,9 @@ class PropertySearch extends React.Component {
         
         const data = this.state.data.property;
         const display = (data)=>{
-          return data.map((house)=>{
+          return data.map((house, index)=>{
                 return <div class="content-wrapper wrap" onClick={e => this.storage(house)}>
-                            <img src='https://source.unsplash.com/featured/?house'/>
+                            <img src={`https://source.unsplash.com/featured/?house/${index}`} />
                             <div class="text-wrapper">
                         <h2>{house.address.oneLine}</h2> 
                             </div>
@@ -61,7 +64,7 @@ class PropertySearch extends React.Component {
             <div className="content-wrapper wrap" >
                 <Link to='/shoppingCart'>Shopping Cart</Link>
                 {
-                    this.getImages().map((e, i)=>{
+                    !this.getImages() ? 'Your cart is empty' : this.getImages().map((e, i)=>{
                     return <img src={e.url} key={i} alt="zillow"/>
                 })
                 }

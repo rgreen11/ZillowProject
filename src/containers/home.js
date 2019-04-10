@@ -1,16 +1,30 @@
-import React from 'react';
+import React, {Component}from 'react';
 import './home.css';
 import image from './img/IMG-0401.JPG'
 
 
-export default () => {
+ class Home extends Component {
+        
+    state = {
+        area : null,
+    }
 
-    return (<div className="image-body">
+handleChange = (e)=>{
+    this.setState({area: e.target.value})
+}
+
+storeZipCode = () =>{
+    const area = this.state.area
+  return localStorage.setItem('location', area)
+    }
+
+render(){
+    console.log(this.state)
+    return (<>
+    <div className="image-body">
         <div className="background-image">
             <img src={image} className='image'/>
         </div>
-
-        
 
         <div className="container col-12">
             <div className="search-container">
@@ -38,11 +52,12 @@ export default () => {
                 </div>
 
                 <div className="input-group mb-3">
-                    <input type="text" className="form-control" placeholder="Enter an Address, City or Zip code" aria-describedby="button-addon2" />
+                    <input type="text" className="form-control" placeholder="Enter an Address, City or Zip code" aria-describedby="button-addon2" onChange={this.handleChange}/>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                        <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={this.storeZipCode}>Button</button>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -61,6 +76,10 @@ export default () => {
             </div>
         </div>
     </div>
+    </>
     )
-
+    }
 }
+
+
+export default Home;
