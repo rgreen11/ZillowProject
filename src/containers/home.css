@@ -4,12 +4,15 @@
     height: 100%;
     position: absolute;
     margin: auto;
+    top: 77px;
 }
 
 .header{
     position: relative;
     /* opacity: .5; */
-    background-color: gold;
+    background-color: white;
+    font-size: 20px;
+    font-family: 'Mukta', sans-serif;
 }
 
 .search-container {
@@ -25,19 +28,21 @@
     padding: 10px 50px 10px 50px;
     right: 20px;
     border: 2px solid grey;
-    color: gold;
+    color: white;
     display: block;
     height: 100%;
     
 }
 
 .type-search{
-    color: gold;
+    color: white;
+    font-weight: bold;
 }
 
 .heading{
-    color: gold;
+    color: white;
     margin-left: 40px;
+    
 }
 
 .footer{
@@ -46,7 +51,7 @@
 }
 
 .navbar-brand{
-    color: #96783A;
+    color: white;
 }
 
 button{
@@ -55,3 +60,6 @@ button{
 
 
 
+.secondary{
+    padding-left: 100px;
+}

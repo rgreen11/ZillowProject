@@ -1,6 +1,7 @@
 import React, {Component}from 'react';
 import './home.css';
 import image from './img/IMG-0401.JPG'
+import {Link} from 'react-router-dom';
 
 
  class Home extends Component {
@@ -43,10 +44,10 @@ render(){
                             <a className='type-search' role="navigation" href="../PropertyProfile/PropertyProfile.html">Rent</a>
                         </li>
                         <li className="active col-3">
-                            <a className='type-search' role="navigation" href="../AgentFinder/AgentFinder.html">Agent Finder</a>
+                            <a className='type-search' role="navigation" href="../AgentFinder/AgentFinder.html">Agent </a>
                         </li>
                         <li className="active col-3">
-                            <a className='type-search' role="navigation" href="../PropertyListing/Listings.html">Show All</a>
+                            <a className='type-search' role="navigation" href="../PropertyListing/Listings.html">All</a>
                         </li>
                     </ul>
                 </div>
@@ -54,7 +55,7 @@ render(){
                 <div className="input-group mb-3">
                     <input type="text" className="form-control" placeholder="Enter an Address, City or Zip code" aria-describedby="button-addon2" onChange={this.handleChange}/>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={this.storeZipCode}>Button</button>
+                      <Link to ={'/listings/search'}>  <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={this.storeZipCode}>Search</button> </Link>
                     </div>
                 </div>
 

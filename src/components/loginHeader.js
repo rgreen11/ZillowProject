@@ -17,8 +17,8 @@ return(
                 if (user) {
                     console.log(user)
                     return (<>
-                        <div className="container spacing">
-                            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                        <div className="container">
+                            <nav className="header">
                                 <ul>
                                     <Link to='/'><span>Home</span></Link>
                                     <Link to='/listings/search'><span>Property Search</span></Link>
@@ -32,7 +32,7 @@ return(
                 } else {
                     return(<>
                            <div className="container spacing">
-                            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                            <nav className="header">
                                 <ul>
                                     <Link to='/'><span>Home</span></Link>
                                     <Link to='/listings/search'><span>Property Search</span></Link>

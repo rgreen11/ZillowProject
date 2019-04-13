@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import API_KEY from '../components/API';
+import {APIKEY, } from '../components/API';
 import {Link} from 'react-router-dom';
 import ImageService from '../services/images'; 
 
@@ -18,11 +18,12 @@ class PropertySearch extends React.Component {
     
 
     componentDidMount () {
+        console.log(APIKEY.Attom)
         const zipCode = localStorage.getItem('location')
-        const APIKEY = API_KEY;
+        const {Attom} = APIKEY;
         axios.get(`https://search.onboard-apis.com/propertyapi/v1.0.0/property/address?postalcode=${zipCode}&page=1&pagesize=10`, 
         { headers: 
-            { apikey: APIKEY ,
+            { apikey: Attom ,
             } })
             .then((data) => {
                 console.log(data)
@@ -50,9 +51,9 @@ class PropertySearch extends React.Component {
         
         const data = this.state.data.property;
         const display = (data)=>{
-          return data.map((house, index)=>{
+          return data.map((house, index=11101)=>{
                 return <div class="content-wrapper wrap" onClick={e => this.storage(house)}>
-                            <img src={`https://source.unsplash.com/featured/?house/${index}`} />
+                            <img src={`https://source.unsplash.com/random/?house/${index}`} />
                             <div class="text-wrapper">
                         <h2>{house.address.oneLine}</h2> 
                             </div>
