@@ -8,6 +8,7 @@ import AuthContext from './contexts/auth';
 import firebase from './firebase';
 import LoginHeader from './components/loginHeader';
 import ShoppingCart from './containers/shoppingCart';
+import SpecificProperty from './containers/SpecificProperty';
 import Upload from './containers/upload';
 // import BrokerListing from './containers/brokerListing';
 
@@ -15,6 +16,7 @@ import Upload from './containers/upload';
 class App extends Component {
 
   static contextType = AuthContext;
+  
   state = {
     user: null
   }
@@ -41,12 +43,13 @@ class App extends Component {
     return (
       <AuthContext.Provider value={this.state.user}>
         <LoginHeader />
-          <Route path='/' exact component={Home} />
-          <Route path='/seller/create' exact component={Signup} />
-          <Route path='/seller/login' exact component={Login} />
-          <Route path='/seller/image' exact component={Upload} />
-          <Route path='/listings/search' exact component={PropertySearch} />
-          <Route path='/shoppingCart' exact component={ShoppingCart} />
+          <Route path='/' exact strict component={Home} />
+          <Route path='/seller/create' exact strict component={Signup} />
+          <Route path='/seller/login' exact strict component={Login} />
+          <Route path='/seller/image' exact strict component={Upload} />
+          <Route path='/listings/search' exact strict component={PropertySearch} />
+          <Route path='/specific/property' exact strict component = {SpecificProperty} />
+          <Route path='/shoppingCart' exact strict component={ShoppingCart} />
       </AuthContext.Provider>
     );
   }
